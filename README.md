@@ -1,6 +1,7 @@
-# GitHub Repository Terraform Module
+# GitHub Repository Terraform Module Extended
 
 This Terraform module creates a private repository on GitHub, and adds a deploy key to it.
+Optionally, can copy YAML config files to the repository.
 
 ## Usage
 
@@ -25,6 +26,8 @@ module "tls_private_key" {
 - branch - (Optional) The name of the branch to create. Default is main.
 - public_key_openssh - The public key to use as a deploy key for the repository.
 - public_key_openssh_title - The title of the public key to use as a deploy key for the repository.
+- configs_path_local - The local path to configs to place in a new repository.
+- configs_path_remote - The path for configs in a new repository.
 
 ## Outputs
 - repository_name - The name of the created repository.

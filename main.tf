@@ -15,3 +15,15 @@ resource "github_repository_deploy_key" "this" {
   key        = var.public_key_openssh
   read_only  = false
 }
+
+resource "github_repository_file" "config" {
+  for_each = fileset(var.configs_path_local, "*.yaml")
+
+  repository          = github_repository.this.name
+  branch              = "main"
+  file                = "${var.configs_path_remote}/${each.value}"
+  content             = file("${var.configs_path_local}/${each.value}")
+  commit_message      = "Added ${each.value}"
+  commit_author       = var.github_owner
+  commit_email        = "terraform@example.com"
+}

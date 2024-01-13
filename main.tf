@@ -17,7 +17,7 @@ resource "github_repository_deploy_key" "this" {
 }
 
 resource "github_repository_file" "config" {
-  for_each = fileset(var.configs_path_local, "*.yaml")
+  for_each = var.configs_path_local == null ? toset([]) : fileset(var.configs_path_local, "*.yaml")
 
   repository          = github_repository.this.name
   branch              = "main"

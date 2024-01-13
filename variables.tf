@@ -38,10 +38,12 @@ variable "public_key_openssh_title" {
 
 variable "configs_path_local" {
   type        = string
+  default     = null
   description = "The local path to configs to place in a new infrastructure repository"
 }
 
 variable "configs_path_remote" {
   type        = string
+  default     = null
   description = "The path for configs in git in a new infrastructure repository"
 }
